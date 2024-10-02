@@ -136,7 +136,7 @@ h6 {
 .game {
     display: flex;
     gap: 50px;
-    margin-top: 0px;
+    margin-top: -20px;
     flex-direction: column;
 }
 
