@@ -3,7 +3,153 @@
     padding: 0;
 }
 
-.header {
-    height: 10vh;
-    background-color: #083344;
+body {
+    background-color: #0f172a;
+    color: #cbd5e1;
+    font-family: "Chakra Petch", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #1e293b;
+    width: 400px;
+    position: relative;
+}
+
+.sidebar > h1 {
+    font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    padding-top: 20px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+}
+
+h6 {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    font-family: "CHakra Petch", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.5rem;
+    text-shadow: 3px 3px 10px #64748b;
+}
+
+.footer > p {
+    padding: 2px;   
+    margin-top: 5px;
+    line-height: 1.5;
+    padding-left: 10px;
+}
+
+.sidebar > p:first-of-type {
+    text-align: center;
+    border-bottom: 1px solid #475569;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    letter-spacing:1.5px;
+    font-family: "Chakra Petch", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px;
+}
+
+.footer-main {
+    border-top: 2px solid #475569;
+    padding-top: 7px;
+    width: 100%;
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+}
+
+.footer > p:nth-of-type(4) {
+    padding-bottom: 25px;
+}
+
+.grids {
+    height: 8rem;
+    width: 8rem;
+    border: 1px solid #cbd5e1;
+    color: #cbd5e1;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.game-board {
+    display: inline-grid;
+    grid-template: repeat(3, 8rem) / repeat(3, 8rem); 
+    border: 3px solid #cbd5e1;
+    box-shadow: 6px 6px 25px #64748b;
+}
+
+.main {
+    display: flex;
+    /* justify-content: center; */
+    /* border: 1px solid wheat; */
+    height: 90vh;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+    width: 100px;
+    gap: 15px;
+}
+
+.buttons > *, .new-game {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #1e293b;
+    font-family: "Chakra Petch", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    border: 2px solid #cbd5e1;
+    color: #cbd5e1;
+}
+
+.new-game {
+    padding: 5px 25px;
+}
+
+.buttons > *:hover, .new-game:hover {
+    background-color: #cbd5e1;
+    color: #0f172a;
+}
+
+.buttons > *:active, .new-game:active {
+    background-color: #1e293b;
+    color: #cbd5e1  ;
+}
+
+.game {
+    display: flex;
+    gap: 50px;
+    margin-top: -40px;
+}
+
+
+.article {
+    margin-top: 60px;
+    padding-top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    flex-grow: 1;
+    width: auto;
+    align-items: center;
+}
+
+
+.result {
+    text-align: center;
+    font-family: "Press Start 2P", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica';
+    font-size: 2rem;
+    
 }
