@@ -95,7 +95,33 @@ let play = function(player1, player2, board, result) {
             moves++;
 
             if(moves === 9) {
-                
+                result.textContent = "The game is a draw! Press reset!"
+                gameOver = true;
+
+                const newGameBtn = document.createElement("button");
+                newGameBtn.textContent = "New Game";
+                newGameBtn.classList = "new-game"
+                const article = document.querySelector(".article");
+                article.appendChild(newGameBtn);
+
+                // Remove the reset button after the game is over
+                const resetBtn = document.querySelector(".reset");
+                resetBtn.remove();
+
+                // Add event listener to the new game button
+                newGameBtn.addEventListener("click", function () {
+                    resetGame(board);
+                    const allGrids = document.querySelectorAll(".grids");
+                    for (let i of allGrids) {
+                        i.textContent = "";
+                    }
+                    result.textContent  = "";
+                    article.removeChild(newGameBtn); // Remove the "New Game" button
+                    const buttons = document.querySelector(".buttons");
+                    buttons.appendChild(playBtn);
+                }); 
+
+                return; 
             }
         }
     }
