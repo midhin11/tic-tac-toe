@@ -33,7 +33,6 @@ let playGame = function() {
 
     
     while(true){
-        console.log(board);
         
         let row = Number(prompt(`${activePlayer.name} with ${activePlayer.marker} Please select row? (0-2)`, 0));
         let col = Number(prompt(`${activePlayer.name} with ${activePlayer.marker} Please select column? (0-2)`, 0));
@@ -41,17 +40,60 @@ let playGame = function() {
         let isValid = validityTest(board, row, col);
         if(isValid) {
             gameBoard.placeMarker(activePlayer.marker, row, col)
-           if (gameOverTest(board)){
-                console.log(`${activePlayer.name} with ${activePlayer.marker} wins!`)
+            displayBoard(board);
+
+            if(checkWin(board, activePlayer) === true) {
+                console.log(`${activePlayer.name} with ${activePlayer.marker} marker wins!`)
                 break;
-            }
-            activePlayer = activePlayer === player1 ? player2 : player1;
+            } else if (isBoardFull(board) === true) {
+                console.log(`The Game is a draw!`)
+                break;
+            } else {activePlayer = activePlayer === player1 ? player2 : player1};
         } 
         
     }
 }
 
 playGame();
+
+
+//win-check
+
+function checkWin(board, activePlayer) {
+    if((board[0][0] === activePlayer.marker && board[1][1] === activePlayer.marker && board[2][2] === activePlayer.marker)
+    || (board[0][0] === activePlayer.marker && board[0][1] === activePlayer.marker && board[0][2] === activePlayer.marker)
+    || (board[1][0] === activePlayer.marker && board[1][1] === activePlayer.marker && board[1][2] === activePlayer.marker)
+    || (board[2][0] === activePlayer.marker && board[2][1] === activePlayer.marker && board[2][2] === activePlayer.marker)
+    || (board[0][0] === activePlayer.marker && board[1][0] === activePlayer.marker && board[2][0] === activePlayer.marker)
+    || (board[0][1] === activePlayer.marker && board[1][1] === activePlayer.marker && board[2][1] === activePlayer.marker)
+    || (board[0][2] === activePlayer.marker && board[1][2] === activePlayer.marker && board[2][2] === activePlayer.marker)
+    || (board[0][2] === activePlayer.marker && board[1][1] === activePlayer.marker && board[2][0] === activePlayer.marker)
+    ) {
+        return true;
+    } 
+    else {
+        return false;
+    }
+}
+
+//boardfull check
+
+function isBoardFull(board) {
+    let boardArray = [];
+    for(let i=0; i<3; i++){
+        for(let j=0; j<3; j++){
+            boardArray.push(board[i][j]);
+        }
+    }
+
+    for(let item of boardArray){
+        if(item == "") {
+            return false;
+        }
+    }
+
+    return true;
+}
 
 
 //validity test
@@ -66,45 +108,16 @@ function validityTest(board, row, col){
     else return true;
 }
 
-//Game Over Test 
+//display-board 
 
-function gameOverTest (board){
-    let isOver = true;
-
-    //Win Test
-    if((board[0][0] === "X" && board[1][1] === "X" && board[2][2] === "X")
-    || (board[0][0] === "X" && board[0][1] === "X" && board[0][2] === "X")
-    || (board[1][0] === "X" && board[1][1] === "X" && board[1][2] === "X")
-    || (board[2][0] === "X" && board[2][1] === "X" && board[2][2] === "X")
-    || (board[0][0] === "X" && board[1][0] === "X" && board[2][0] === "X")
-    || (board[0][1] === "X" && board[1][1] === "X" && board[2][1] === "X")
-    || (board[0][2] === "X" && board[1][2] === "X" && board[2][2] === "X")
-    ) {
-        return isOver = true;
-    } 
-    else if ((board[0][0] === "O" && board[1][1] === "O" && board[2][2] === "O")
-    || (board[0][0] === "O" && board[0][1] === "O" && board[0][2] === "O")
-    || (board[1][0] === "O" && board[1][1] === "O" && board[1][2] === "O")
-    || (board[2][0] === "O" && board[2][1] === "O" && board[2][2] === "O")
-    || (board[0][0] === "O" && board[1][0] === "O" && board[2][0] === "O")
-    || (board[0][1] === "O" && board[1][1] === "O" && board[2][1] === "O")
-    || (board[0][2] === "O" && board[1][2] === "O" && board[2][2] === "O")
-    ) {
-        return isOver = true;
-    }
-
-    let boarArray = [];
-    for(let i=0; i<3; i++){
-        for(let j=0; j<3; j++){
-            boarArray.push(board[i][j]);
+function displayBoard (board) {
+    for (let i=0; i<3; i++){
+        const row = board[i].map(cell => cell === "" ? " " : cell)
+        console.log(row.join(" | "));
+        if(i<2){
+            console.log("----------")
         }
     }
-
-    for(let item of boarArray){
-        if(item == "") {
-            isOver = false;
-        }
-    }
-
-    return isOver;
+    console.log("");
+    console.log("");
 }
