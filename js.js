@@ -40,6 +40,7 @@ let playerOneWins = document.querySelector(".player1 > div:nth-of-type(2)");
 let drawCount = document.querySelector(".draw > div:nth-of-type(2)");
 let playerTwoWins = document.querySelector(".player2 > div:nth-of-type(2)"); 
 
+// Adding loop to assign each cell in the board with click event
 for(let i = 0; i < cells.length; i++) {
     cells[i].addEventListener("click", function(e) {
         let row = Number(e.target.dataset.row);
@@ -80,6 +81,7 @@ for(let i = 0; i < cells.length; i++) {
     })
 }
 
+// Condtions to happen on clicking the next button
 nextRoundBtn.addEventListener("click", function(e) {
     boardLogicClear(board);
     renderClear(cells);
@@ -90,6 +92,7 @@ nextRoundBtn.addEventListener("click", function(e) {
     isGameOver = false;
 })
 
+// Conditions to restart the game
 restartBtn.addEventListener("click", function() {
     nextRoundBtn.disabled = true;
     isGameOver = false;
