@@ -97,7 +97,7 @@ restartBtn.addEventListener("click", function() {
     nextRoundBtn.disabled = true;
     isGameOver = false;
     activePlayer = player1;
-    commentary.textContent
+    commentary.textContent = `${activePlayer.name} / ${activePlayer.marker} turn!`;
     playerOneWins.textContent = 0;
     playerTwoWins.textContent = 0;
     drawCount.textContent = 0;
